@@ -9,6 +9,7 @@ import {UserComponent} from './users/user/user.component';
 import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
 import {AuthGuardService} from './auth-guard.service';
 import {CanDeactiveGuardService} from './servers/server/can-deactive-guard.service';
+import { ErrorsPageComponent } from './errors-page/errors-page.component';
 
 
 const routes: Routes = [
@@ -23,7 +24,8 @@ const routes: Routes = [
   {path: 'users', component: UsersComponent, children: [
       {path: ':id/:name', component: UserComponent}
     ]},
-  {path: 'something', component: PageNotFoundComponent},
+  // {path: 'something', component: PageNotFoundComponent},
+   {path: 'something', component: ErrorsPageComponent, data: {message: 'page not found'}},
   {path: '**', redirectTo: '/something', pathMatch: 'full'},
 ];
 
