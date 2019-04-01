@@ -10,6 +10,7 @@ import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
 import {AuthGuardService} from './auth-guard.service';
 import {CanDeactiveGuardService} from './servers/server/can-deactive-guard.service';
 import { ErrorsPageComponent } from './errors-page/errors-page.component';
+import {ServerResolverService} from './servers/server/server-resolver.service';
 
 
 const routes: Routes = [
@@ -18,7 +19,7 @@ const routes: Routes = [
     canActivateChild: [AuthGuardService],
     component: ServersComponent,
     children: [
-      {path: ':id',  component: ServerComponent},
+      {path: ':id',  component: ServerComponent, resolve: {serverData: ServerResolverService}},
       {path: ':id/edit', component: EditServerComponent, canDeactivate: [CanDeactiveGuardService]}
     ]},
   {path: 'users', component: UsersComponent, children: [
